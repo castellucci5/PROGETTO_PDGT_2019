@@ -9,7 +9,7 @@ La seconda parte del lato client invece prevede di creare un lato client costitu
 
 # DOCUMENTAZIONE API
 <strong>#stampa_db_num_veicoli.php</strong> <br />
-Questa API permette di visualizzare tutti i comuni della regione Friuli Venezia Giulia presenti all'interno del database ognuno con il numero di veicoli relativamente all'anno in cui è avvento il campionamento.
+Questa API permette di visualizzare tutti i comuni della regione Friuli Venezia Giulia presenti all'interno del database ognuno con il numero di veicoli relativamente all'anno in cui è avvenuto il campionamento.
 Non richiede parametri. Se la richiesta HTTP ha successo restituisce la lista dei comuni in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
 <br /><br /><i>Esempio di lista in JSON restituita:</i><br /><br />
@@ -44,6 +44,37 @@ Non richiede parametri. Se la richiesta HTTP ha successo restituisce la lista de
 <br /><br />
 
 
+<strong>#stampa_dati_sel_num_veicoli.php</strong> <br />
+Questa API permette di effettuare una ricerca specifica nel database, andando a cercare l'unico parametro passato nella query. Se la richiesta HTTP ha successo restituisce la lista dei campionamenti (intera riga del database) del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
+<table>
+  <tr>
+    <td><b>Parametri</b></td>
+    <td><b>Tipo</b></td>
+    <td><b>Descrizione</b></td>
+  </tr>
+  <tr>
+    <td>PROVINCIA</td>
+    <td>Stringa</td>
+    <td>permette di filtrare il database in base alla provincia .</td>
+  </tr>
+  <tr>
+    <td>COMUNE</td>
+    <td>Stringa</td>
+    <td>permette di filtrare il database in base al comune.</td>
+  </tr>
+  <tr>
+    <td>ANNO</td>
+    <td>Stringa</td>
+    <td>permette di filtrare il database in base all'anno di campionamento.</td>
+  </tr>
+</table>
 
+<br /><i>Esempio di URL valido, completo di query:</i><br />
+http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?PROVINCIA=GORIZIA
 
+http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?COMUNE=CAPRIVA+DEL+FRIULI
+
+http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?ANNO=1999-2000
+
+<br /><br />
