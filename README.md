@@ -8,9 +8,9 @@ Il lato client sarà costituito da due parti indipendenti una utilizzata per il 
 La seconda parte del lato client invece prevede di creare un lato client costituito da una pagina HTML che utilizzi sia le API create per poter accedere al database OPENDATA su altervista, sia delle API esterne fonite dal sito di GOOGLE MAPS.
 
 # DOCUMENTAZIONE API
-<strong>#stampa_db_num_veicoli.php</strong> <br />
+<strong>stampa_db_num_veicoli.php</strong> <br />
 Questa API permette di visualizzare tutti i comuni della regione Friuli Venezia Giulia presenti all'interno del database ognuno con il numero di veicoli relativamente all'anno in cui è avvenuto il campionamento.
-Non richiede parametri. Se la richiesta HTTP ha successo restituisce la lista dei comuni in formato JSON, altrimenti ritorna lo stato HTTP #400.
+Non richiede parametri. Se la richiesta HTTP(metodo GET) ha successo restituisce la lista dei comuni in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
 <br /><br /><i>Esempio di lista in JSON restituita:</i><br /><br />
 
@@ -44,8 +44,8 @@ Non richiede parametri. Se la richiesta HTTP ha successo restituisce la lista de
 <br /><br />
 
 
-<strong>#stampa_dati_sel_num_veicoli.php</strong> <br />
-Questa API permette di effettuare una ricerca specifica nel database, andando a cercare l'unico parametro passato nella query. Se la richiesta HTTP ha successo restituisce la lista dei campionamenti (intera riga del database) del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
+<strong>stampa_dati_sel_num_veicoli.php</strong> <br />
+Questa API permette di effettuare una ricerca specifica nel database, andando a cercare l'unico parametro passato nella query. Se la richiesta HTTP (metodo GET) ha successo restituisce la lista dei campionamenti (intera riga del database) del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
 <table>
   <tr>
@@ -78,8 +78,8 @@ http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?COMUNE=CAP
 http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?ANNO=1999-2000
 
 <br /><br />
-<strong>#stampa_sel_doppia_num_veicoli.php</strong> <br />
-Questa API permette di effettuare una ricerca specifica nel database, andando a cercare in base ai 2 parametri passati nella query. Se la richiesta HTTP ha successo restituisce un solo capionamento in quanto ogni comune avrà un campionamento (intera riga del database) per anno del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
+<strong>stampa_sel_doppia_num_veicoli.php</strong> <br />
+Questa API permette di effettuare una ricerca specifica nel database, andando a cercare in base ai 2 parametri passati nella query. Se la richiesta HTTP (metodo GET) ha successo restituisce un solo capionamento in quanto ogni comune avrà un campionamento (intera riga del database) per anno del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
 
 <table>
   <tr>
@@ -104,3 +104,51 @@ http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE=C
 
 
 <br /><br />
+
+<strong>inserire_dati_nel_database.php</strong> <br />
+Questa API permette di inserire dati (aggiunge righe) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuto inserimento oppure con un messaggio di insuccesso.
+
+<table>
+  <tr>
+    <td><b>Parametri</b></td>
+    <td><b>Tipo</b></td>
+    <td><b>Descrizione</b></td>
+  </tr>
+ <tr>
+    <td>UTENTE</td>
+    <td>Stringa</td>
+    <td>inserire il nome utente.</td>
+  </tr>
+ <tr>
+    <td>PASSWORD</td>
+    <td>Stringa</td>
+    <td>inserire la password .</td>
+  </tr>
+  <tr>
+    <td>PROVINCIA</td>
+    <td>Stringa</td>
+    <td>inserie quale provincia aggiungere nel database.</td>
+  </tr>
+  <tr>
+    <td>COMUNE</td>
+    <td>Stringa</td>
+    <td>inserire quale comune aggiungere al database.</td>
+  </tr>
+  <tr>
+    <td>ANNO</td>
+    <td>Stringa</td>
+    <td>inseriere quale anno aggiunere al database .</td>
+   
+  </tr>
+  <tr>
+    <td>NUMVEICOLI</td>
+    <td>Stringa</td>
+    <td>inseriere il numero di veicoli che si vuole aggiungere al database.</td>
+  
+  </tr>
+  
+  
+</table>
+
+<br /><i>l'url di riferimento per l'invio di dati trammite metodo POST é il seguente:</i><br />
+http://giakispeed.altervista.org/PDGT/inserire_dati_nel_database.php
