@@ -7,4 +7,4 @@ Questo progetto prevede di creare delle API per poter visualizzare, aggiungere o
 Il lato client sarà costituito da due parti indipendenti una utilizzata per il "collaudo delle API" ed è costituita da uno sketch php con interfaccia a riga di comando.
 La seconda parte del lato client invece prevede di creare un lato client costituito da una pagina HTML che utilizzi sia le API create per poter accedere al database OPENDATA su altervista, sia delle API esterne fonite dal sito di GOOGLE MAPS.
 
-
+# DOCUMENTAZIONE API
