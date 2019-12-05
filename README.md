@@ -78,3 +78,29 @@ http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?COMUNE=CAP
 http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?ANNO=1999-2000
 
 <br /><br />
+<strong>#stampa_sel_doppia_num_veicoli.php</strong> <br />
+Questa API permette di effettuare una ricerca specifica nel database, andando a cercare in base ai 2 parametri passati nella query. Se la richiesta HTTP ha successo restituisce un solo capionamento in quanto ogni comune avrà un campionamento (intera riga del database) per anno del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
+
+<table>
+  <tr>
+    <td><b>Parametri</b></td>
+    <td><b>Tipo</b></td>
+    <td><b>Descrizione</b></td>
+  </tr>
+  <tr>
+    <td>COMUNE</td>
+    <td>Stringa</td>
+    <td>permette di filtrare il database in base al comune.</td>
+  </tr>
+  <tr>
+    <td>ANNO</td>
+    <td>Stringa</td>
+    <td>permette di filtrare il database in base all'anno di campionamento.</td>
+  </tr>
+</table>
+
+<br /><i>Esempio di URL valido, completo di query:</i><br />
+http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE=CAPRIVA+DEL+FRIULI&ANNO=1999-2000
+
+
+<br /><br />
