@@ -25,7 +25,8 @@ do {
   echo "\t[2] Stampa filtrata in base alla provincia.\n";
   echo "\t[3] Stampa filtrata in base al comune.\n";
   echo "\t[4] Stampa filtrata in base all'anno.\n";
-  echo "\t[5] Chiusura del client.\n\n";
+  echo "\t[5] Stampa filtrata in base al comune e all'anno.\n";
+  echo "\t[6] Chiusura del client.\n\n";
   $first_ch = readline();     //acquisizione scelta dell'utente
   $first_ch = intval($first_ch);
   
@@ -76,7 +77,7 @@ do {
     //TERMINE del codice eseguito con la terza scelta del menù
 	
   } 
-  elseif ($first_ch === 4) {
+  elseif ($first_ch === 4) { //opzione per filtrare il database base in base a due parametri
 	//inserimento dell'anno da filtrare 
     echo "inserire L'anno con la quale filtrare la tabella";
     $research = readline(); //acquisizione caratteri da filtrare
@@ -93,7 +94,27 @@ do {
     //TERMINE del codice eseguito con la quarta scelta del menù
 	  
   }
-   elseif ($first_ch ===5 ) {
+  elseif ($first_ch === 5) {
+	//inserimento del comune da filtrare 
+    echo "inserire un COMUNE del Friuli-Venezia-Giulia con la quale filtrare la tabella";
+    $research = readline();  //acquisizione caratteri da filtrare
+	//inserimento dell'anno da filtrare 
+	echo "inserire un ANNO con IL quale filtrare la tabella";
+    $researchb = readline(); //acquisizione caratteri da filtrare
+    //selezione dell'url a cui effettuare richiesta HTTP per la richiesta con doppio parametro
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/db_sel_prova.php?COMUNE='.$research.'&ANNO='.$researchb);
+    //settaggio della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //stampa ordinata delle info del database
+    stampa_numero_veicoli ($http_code,$response);
+    //TERMINE del codice eseguito con la seconda scelta del menù
+	
+  }
+   elseif ($first_ch ===6 ) {
 	$close_client = 0;         //impostando la variabile a 0 interrompiamo l'esecuzione del client
     echo "\n\nTerminazione corretta del client, arrivederci !\n\n";
     exit;                      //terminazione del programma  
