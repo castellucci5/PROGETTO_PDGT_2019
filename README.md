@@ -106,7 +106,7 @@ http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE=C
 <br /><br />
 
 <strong>inserire_dati_nel_database.php</strong> <br />
-Questa API permette di inserire dati (aggiunge un riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuto inserimento oppure con un messaggio di insuccesso. Specificando il motivo dell'insucceso.
+Questa API permette di inserire dati (aggiunge una riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuto inserimento oppure con un messaggio di insuccesso. Specificando il motivo dell'insucceso.
 
 <table>
   <tr>
@@ -150,5 +150,55 @@ Questa API permette di inserire dati (aggiunge un riga) all'interno del database
   
 </table>
 
-<br /><i>l'url di riferimento per l'invio di dati trammite metodo POST é il seguente:</i><br />
+<br /><i>l'url di riferimento per l'invio di dati tramite metodo POST é il seguente:</i><br />
 http://giakispeed.altervista.org/PDGT/inserire_dati_nel_database.php
+
+*****
+
+<strong>eliminare_dati_nel_database.php</strong> <br />
+Questa API permette di eliminare dati (elimina una riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuta eliminazione oppure con un messaggio di insuccesso. Prima dell'eliminazione viene verificata l'identità dell'utente e la presenza dei dati da eliminare nel database e viene infine segnalato il successo o l'insucceso della richiesta.
+
+<table>
+  <tr>
+    <td><b>Parametri</b></td>
+    <td><b>Tipo</b></td>
+    <td><b>Descrizione</b></td>
+  </tr>
+ <tr>
+    <td>UTENTE</td>
+    <td>Stringa</td>
+    <td>inserire il nome utente.</td>
+  </tr>
+ <tr>
+    <td>PASSWORD</td>
+    <td>Stringa</td>
+    <td>inserire la password .</td>
+  </tr>
+  <tr>
+    <td>PROVINCIA</td>
+    <td>Stringa</td>
+    <td>inserie quale provincia eliminare nel database.</td>
+  </tr>
+  <tr>
+    <td>COMUNE</td>
+    <td>Stringa</td>
+    <td>inserire quale comune eliminare nel database.</td>
+  </tr>
+  <tr>
+    <td>ANNO</td>
+    <td>Stringa</td>
+    <td>inseriere quale anno eliminare nel database .</td>
+   
+  </tr>
+  <tr>
+    <td>NUMVEICOLI</td>
+    <td>Stringa</td>
+    <td>inseriere il numero di veicoli che si vuole eliminare nel database.</td>
+  
+  </tr>
+  
+  
+</table>
+
+<br /><i>l'url di riferimento per l'invio di dati tramite metodo POST relativi alla richiesta di eliminazione é il seguente:</i><br />
+http://giakispeed.altervista.org/PDGT/eliminare_dati_nel_database.php
