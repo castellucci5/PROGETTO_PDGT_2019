@@ -26,7 +26,8 @@ do {
   echo "\t[3] Stampa filtrata in base al comune.\n";
   echo "\t[4] Stampa filtrata in base all'anno.\n";
   echo "\t[5] Stampa filtrata in base al comune e all'anno.\n";
-  echo "\t[6] Chiusura del client.\n\n";
+  echo "\t[6] Inserire una nuovo campionamento nel database.\n"; 
+  echo "\t[7] Chiusura del client.\n\n";
   $first_ch = readline();     //acquisizione scelta dell'utente
   $first_ch = intval($first_ch);
   
@@ -114,7 +115,32 @@ do {
     //TERMINE del codice eseguito con la seconda scelta del menù
 	
   }
-   elseif ($first_ch ===6 ) {
+  elseif ($first_ch === 6) {
+	//Richiesta  dati utente
+	echo "Inserire Nome Utente:";
+    $utente = readline();   //nome utente : 'user'
+    echo "Inserire password:";
+    $password = readline(); //password : 'pass'
+    //richiesta dati da inserire nella nuova riga
+    echo "Inserire una provincia del Friuli-Venezia-Giulia:";	//richiesta provincia da inserire 
+    $provincia  = readline();
+    echo "Inserire un comune del Friuli-Venezia-Giulia:";	    //richiesta comune da inserire 
+    $comune     = readline();
+    echo "Inserire l'anno di campionamento nel seguente formato aaaa-aaaa :";	  //richiesta anno da inserire con formato es: 2018-2019
+    $anno       = readline();
+    echo "Inserire il numveicoli :";                            //richiesta numero di veicoli da inserie 
+    $numveicoli = readline();
+    $ch = curl_init();                                          //richiesta http
+    curl_setopt($ch, CURLOPT_URL,"http://giakispeed.altervista.org/PDGT/inserire_dati_nel_database.php"); 
+    curl_setopt($ch, CURLOPT_POST, 1);                          //passaggio dei dati trammite metodo POST 
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                  "UTENTE=".$utente."&PASSWORD=".$password."&PROVINCIA=".$provincia."&COMUNE=".$comune."&ANNO=".$anno."&NUMVEICOLI=".$numveicoli);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+    $res = curl_exec($ch);
+    curl_close($ch);
+	
+  }  
+   elseif ($first_ch ===7 ) {
 	$close_client = 0;         //impostando la variabile a 0 interrompiamo l'esecuzione del client
     echo "\n\nTerminazione corretta del client, arrivederci !\n\n";
     exit;                      //terminazione del programma  
