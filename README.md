@@ -106,7 +106,7 @@ http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE=C
 <br /><br />
 
 <strong>inserire_dati_nel_database.php</strong> <br />
-Questa API permette di inserire dati (aggiunge un riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuto inserimento oppure con un messaggio di insuccesso.
+Questa API permette di inserire dati (aggiunge un riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuto inserimento oppure con un messaggio di insuccesso. Specificando il motivo dell'insucceso.
 
 <table>
   <tr>
