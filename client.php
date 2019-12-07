@@ -22,7 +22,8 @@ $close_client = 1;            //impostiamo variabile di controllo ciclo do-while
 do {
   echo "\n\nSelezionare la richiesta da eseguire al database: \n";
   echo "\t[1] Stampa completa del database.\n";
-  echo "\t[2] Chiusura del client.\n\n";
+  echo "\t[2] Stampa filtrata in base alla provincia.\n";
+  echo "\t[3] Chiusura del client.\n\n";
   $first_ch = readline();     //acquisizione scelta dell'utente
   $first_ch = intval($first_ch);
   
@@ -39,7 +40,24 @@ do {
     stampa_numero_veicoli ($http_code,$response);
     //TERMINE del codice eseguito per la prima scelta del menù
   }
-   elseif ($first_ch === 2) {
+  elseif ($first_ch === 2) {
+	//inserimento della provincia da filtrare 
+    echo "inserire una provincia del Friuli-Venezia-Giulia con la quale filtrare la tabella";
+    $research = readline();    //acquisizione caratteri da filtrare
+    //selezione dell'url a cui effettuare richiesta HTTP
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?PROVINCIA='.$research);
+    //settaggio della risposta HTTP come stringa
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    //esecuzione della richiesta HTTP
+    $response = curl_exec($handle);
+    //estrazione del codice di risposta (HTTP status)
+    $http_code = intval(curl_getinfo($handle, CURLINFO_HTTP_CODE));
+    //stampa ordinata delle info del database
+    stampa_numero_veicoli ($http_code,$response);
+    //TERMINE del codice eseguito con la seconda scelta del menù
+	
+  }
+   elseif ($first_ch === 3) {
 	$close_client = 0;         //impostando la variabile a 0 interrompiamo l'esecuzione del client
     echo "\n\nTerminazione corretta del client, arrivederci !\n\n";
     exit;                      //terminazione del programma  
