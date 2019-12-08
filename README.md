@@ -202,3 +202,17 @@ Questa API permette di eliminare dati (elimina una riga) all'interno del databas
 
 <br /><i>l'url di riferimento per l'invio di dati tramite metodo POST relativi alla richiesta di eliminazione é il seguente:</i><br />
 http://giakispeed.altervista.org/PDGT/eliminare_dati_nel_database.php
+
+# Documentazione CLIENT
+
+Il file client.php è stato sviluppato per interagire con le API, è scritto in linguaggio PHP ed è stato ottimizzato per un'esecuzione da CLI. <br />
+Una volta aperto da riga di comando, il programma stampa a video un breve messaggio di introduzione (info programmatore e info del client) seguito da un menù di selezione riguardante le varie funzioni messe a disposizione dal client, ognuna delle quali selezionabile inserendo il numero che la precede e identifica, seguito dal tasto 'invio'. <br />
+Selezionando l'opzione '1' viene stampata a schermo la lista completa dei campionamenti del numero di veicoli contenuti nel database ,le informazioni vengono prelevate tramite richiesta HTTP all' API 'stampa_db_num_veicoli.php'.<br />
+Selezionando l'opzione '2',viene richiesto di inserire la provincia con la quale filtrare il database, le informazioni vengono prelevate mediante richiesta HTTP all' API 'stampa_dati_sel_num_veicoli.php'.<br />
+Selezionando l'opzione '3',viene richiesto di inserire il comune con la quale filtrare il database, le informazioni vengono prelevate mediante richiesta HTTP all' API 'stampa_dati_sel_num_veicoli.php'.<br />
+Selezionando l'opzione '4',viene richiesto di inserire l'anno con la quale filtrare il database, le informazioni vengono prelevate mediante richiesta HTTP all' API 'stampa_dati_sel_num_veicoli.php'.<br />
+Selezionando l'opzione '5',viene richiesto di inserire il comune e successivamente l'anno con i quali filtrare il database, le informazioni vengono prelevate mediante richiesta HTTP all' API 'stampa_sel_doppia_num_veicoli.php'.<br />
+Selezionando l'opzione '6',viene richiesto di inserire i seguenti dati ognuno seguito da invio: username, password, provincia, comune, anno, numero di veicoli da inserire, le informazioni vengono inviate al database mediante richiesta HTTP all' API 'inserire_dati_nel_database.php'.<br />
+Selezionando l'opzione '7',viene richiesto di inserire i seguenti dati ognuno seguito da invio: username, password, provincia, comune, anno, numero di veicoli da eliminare, le informazioni vengono inviate al database mediante richiesta HTTP all' API 'eliminare_dati_nel_database.php'.<br />
+Selezionando l'opzione '8',viene terminat0o il client.<br />
+. <br /><br />
