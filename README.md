@@ -214,5 +214,5 @@ Selezionando l'opzione '4',viene richiesto di inserire l'anno con la quale filtr
 Selezionando l'opzione '5',viene richiesto di inserire il comune e successivamente l'anno con i quali filtrare il database, le informazioni vengono prelevate mediante richiesta HTTP all' API 'stampa_sel_doppia_num_veicoli.php'.<br />
 Selezionando l'opzione '6',viene richiesto di inserire i seguenti dati ognuno seguito da invio: username, password, provincia, comune, anno, numero di veicoli da inserire, le informazioni vengono inviate al database mediante richiesta HTTP all' API 'inserire_dati_nel_database.php'.<br />
 Selezionando l'opzione '7',viene richiesto di inserire i seguenti dati ognuno seguito da invio: username, password, provincia, comune, anno, numero di veicoli da eliminare, le informazioni vengono inviate al database mediante richiesta HTTP all' API 'eliminare_dati_nel_database.php'.<br />
-Selezionando l'opzione '8',viene terminat0o il client.<br />
+Selezionando l'opzione '8',viene terminato il client.<br />
 . <br /><br />
