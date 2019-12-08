@@ -26,8 +26,9 @@ do {
   echo "\t[3] Stampa filtrata in base al comune.\n";
   echo "\t[4] Stampa filtrata in base all'anno.\n";
   echo "\t[5] Stampa filtrata in base al comune e all'anno.\n";
-  echo "\t[6] Inserire una nuovo campionamento nel database.\n"; 
-  echo "\t[7] Chiusura del client.\n\n";
+  echo "\t[6] Inserire una nuovo campionamento (Nuova riga) nel database.\n"; 
+  echo "\t[7] Eliminare un campionamento nel database.\n"; 
+  echo "\t[8] Chiusura del client.\n\n";
   $first_ch = readline();     //acquisizione scelta dell'utente
   $first_ch = intval($first_ch);
   
@@ -103,7 +104,7 @@ do {
 	echo "inserire un ANNO con IL quale filtrare la tabella";
     $researchb = readline(); //acquisizione caratteri da filtrare
     //selezione dell'url a cui effettuare richiesta HTTP per la richiesta con doppio parametro
-    $handle = curl_init('http://giakispeed.altervista.org/PDGT/db_sel_prova.php?COMUNE='.$research.'&ANNO='.$researchb);
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE='.$research.'&ANNO='.$researchb);
     //settaggio della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     //esecuzione della richiesta HTTP
@@ -140,12 +141,38 @@ do {
     curl_close($ch);
 	
   }  
-   elseif ($first_ch ===7 ) {
-	$close_client = 0;         //impostando la variabile a 0 interrompiamo l'esecuzione del client
+  elseif ($first_ch === 7) {
+    //Richiesta  dati utente
+    echo "Inserire Nome Utente:";
+    $utente     = readline();   //nome utente : 'user'
+    echo "Inserire password:";
+    $password   = readline();   //password : 'pass'
+    //richiesta dati da eliminare da database
+    echo "Inserire la provincia da eliminare:";	                //richiesta provincia da eliminare
+    $provincia  = readline();
+    echo "Inserire il comune da eliminare:";	                //richiesta comune da eliminare 
+    $comune     = readline();
+    echo "Inserire l'anno di campionamento da eliminare nel seguente formato aaaa-aaaa :";	  //richiesta anno da eliminare con formato es: 2018-2019
+    $anno       = readline();
+    echo "Inserire il numveicoli da eliminare :";               //richiesta numero di veicoli da eliminare 
+    $numveicoli = readline();
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,"http://giakispeed.altervista.org/PDGT/eliminare_dati_nel_database.php");
+    //curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"POST");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                  "UTENTE=".$utente."&PASSWORD=".$password."&PROVINCIA=".$provincia."&COMUNE=".$comune."&ANNO=".$anno."&NUMVEICOLI=".$numveicoli);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+    $res = curl_exec($ch);
+    curl_close($ch);
+	
+  }  
+  elseif ($first_ch === 8) {
+    $close_client = 0;         //impostando la variabile a 0 interrompiamo l'esecuzione del client
     echo "\n\nTerminazione corretta del client, arrivederci !\n\n";
     exit;                      //terminazione del programma  
   }
   } while ($close_client !== 0); 
-                              //chiusura della sessione CURL
+                               //chiusura della sessione CURL
 curl_close($handle);
 ?>
