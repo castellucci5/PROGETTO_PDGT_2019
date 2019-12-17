@@ -5,7 +5,6 @@ require 'config.php';                                                   //includ
 
 $link = mysqli_connect(DB_SERVER , DB_USER, DB_PASSWORD, DB_DATABASE);  //connessione al db
 																	    //password
-																		// verifica identità utente 
                                                                         //assegno alle variabili locali i dati ricevuti trammite metodo post
 $user = $_POST['UTENTE'];
 $pass = $_POST['PASSWORD'];																		
@@ -26,23 +25,28 @@ if (!$link) {                                                           //se la 
   exit;
 }
 
-                                                                        //controlli sui dati inseriti dall'utente
-if (($user == MY_UTENTE)&&($pass == MY_PASSWORD)){
-	echo ("Utente loggato");
+$query = "SELECT * FROM users WHERE username = '".$username."'"."AND password = '".$password."'";
+
+if (mysqli_real_query($link, $query)) {
+ $result = mysqli_use_result($link);
+ $row = mysqli_fetch_row($result);
+
+if (($row[1] == $username) && ($row[2] == $password)) {
+   echo ("Utente loggato");
 	$verifica_login = 1;
-}
-else{
+                                                                        //controlli sui dati inseriti dall'utente
+}else{
 	echo ("Username e password errati");
 	$verifica_login = 0;
 }
-  
+}  
                                                                         //controllo se la provincia e il comune che si vogliono 
 																		//inserire fanno già parte del database ovvero della regione 
 //$provincia = mysql_real_escape_string($provincia);
 //$comune = mysql_real_escape_string($comune);
 $query = "SELECT COUNT(*) FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'AND COMUNE = '{$comune}'";
 $result = $link->query($query);
-$row = mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
+$row=mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 
 if ($row[0]> 0) {
     echo ("OK LA PROVINCIA E IL COMUNE SONO APPARTENTI ALLA REGIONE");
@@ -58,7 +62,7 @@ mysqli_free_result($result);                        //questa funzione serve per 
 
 $query   = "SELECT COUNT(*) FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'AND COMUNE = '{$comune}'AND ANNO = '{$anno}'";
 $result = $link->query($query);
-$row = mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
+$row=mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 if ($row[0]> 0) {
 		echo ("ATTENZIONE  I DATI INSERITI SONO GIA PRESENTI NEL DATABASE"); 
         $controllo_dati_dupplicati=0;
