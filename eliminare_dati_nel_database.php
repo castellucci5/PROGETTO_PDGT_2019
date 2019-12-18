@@ -25,17 +25,22 @@ if (!$link) {                                                            //se la
   exit;
 }
 
-                                                                               //controlli sui dati inseriti dall'utente
-if (($user == MY_UTENTE)&&($pass == MY_PASSWORD)){
-	echo ("Utente loggato\n");
+
+$query = "SELECT * FROM users WHERE username = '".$username."'"."AND password = '".$password."'";
+
+if (mysqli_real_query($link, $query)) {
+ $result = mysqli_use_result($link);
+ $row = mysqli_fetch_row($result);
+
+if (($row[1] == $username) && ($row[2] == $password)) {
+   echo ("Utente loggato<br>");
 	$verifica_login = 1;
-}
-else{
-	echo ("Username e password errati\n");
+                                                                        //controlli sui dati inseriti dall'utente
+}else{
+	echo ("Username e password errati<br>");
 	$verifica_login = 0;
 }
-                       
-                                                                               //controllo se  i dati che si vogliono eliminare siano presenti nel database																	   
+}
 
 $query = "SELECT COUNT(*) FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'AND COMUNE = '{$comune}'AND ANNO = '{$anno}'AND NUMVEICOLI = '{$numveicoli}'";
 $result = $link->query($query);
