@@ -4,8 +4,7 @@
  a comune e anno.*/
 //Una volta ricevuto il click del bottone e verifico la presenza dei dati necessari. 
 if(isset($_POST['submit'])){
-if((!empty($_POST['Comuni']))&&(!empty($_POST['anno']))&&(($_POST['radio'])=="Radio 1" )) {
-    
+if((!empty($_POST['Comuni']))&&(!empty($_POST['anno']))) {
     
     foreach ($_POST['Comuni'] as $select) {
         

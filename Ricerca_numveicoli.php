@@ -22,17 +22,10 @@
 <?php include'campi_anno.php';?>      <!--esposizione dei campi anno presenti-->
 </select>
 <?php include'select_anno.php'; ?>    <!--gestione dell'anno selezionato-->
-<!---- creazione di bottoni di tipo radio di prova  ----->
-<label class="heading">Radio Buttons :</label>
-<input name="radio" type="radio" value="Radio 1">Radio 1
-<input name="radio" type="radio" value="Radio 2">Radio 2
-<input name="radio" type="radio" value="Radio 3">Radio 3
-<input name="radio" type="radio" value="Radio 4">Radio 4
-<?php include'radio_value.php'; ?> 
 <input name="submit" type="submit" value="RICERCA NUMERO VEICOLI"> <!--creazione del bottone di invio-->
 <?php include'richiesta_database.php'; ?> <!--ricerca dei dati selezionati nel database -->     
 </form>
-echo "<a href=http://localhost/progetto/inserimento_rimozione_dati.php>PAGINA INSERIMENTO E RIMOZIONE</a>";
+<a href=http://localhost/progetto/inserimento_rimozione_dati.php>PAGINA INSERIMENTO E RIMOZIONE</a>;
 </div>
 </div>
 </body>
