@@ -32,11 +32,11 @@ if (mysqli_real_query($link, $query)) {
  $row = mysqli_fetch_row($result);
 
 if (($row[1] == $username) && ($row[2] == $password)) {
-   echo ("Utente loggato");
+   echo ("<span>Utente loggato</span><br>");
 	$verifica_login = 1;
                                                                         //controlli sui dati inseriti dall'utente
 }else{
-	echo ("Username e password errati");
+	echo ("<span>Username e password errati</span><br>");
 	$verifica_login = 0;
 }
 }  
@@ -49,11 +49,11 @@ $result = $link->query($query);
 $row=mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 
 if ($row[0]> 0) {
-    echo ("OK LA PROVINCIA E IL COMUNE SONO APPARTENTI ALLA REGIONE");
+    echo ("<span>Ok,la provincia e il comune sono appartenenti alla regione,</span><br>");
     $controllo_regione = 1;	
     }
 else {
-	 echo ("ATTENZIONE LA PROVINCIA E IL COMUNE NON SONO APPARTENTI ALLA REGIONE");
+	 echo ("<span>Attenzione, la provincia e il comune non sono appartenenti alla regione,</span><br>");
 	 $controllo_regione = 0;
 }	
 
@@ -64,7 +64,7 @@ $query   = "SELECT COUNT(*) FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'A
 $result = $link->query($query);
 $row=mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 if ($row[0]> 0) {
-		echo ("ATTENZIONE  I DATI INSERITI SONO GIA PRESENTI NEL DATABASE"); 
+		echo ("<span>ATTENZIONE,i dati da inserire sono già presenti nel database,</span><br>"); 
         $controllo_dati_dupplicati=0;
 	}
 else {
@@ -83,9 +83,9 @@ if (($verifica_login == 1)&&($controllo_regione == 1)&&($controllo_dati_dupplica
 }
                                                                       //verifico se l'inserimento dai dati è avvenuto correttamente
 if (mysqli_real_query($link, $toinsert)) {   
-	echo("<br>Inserimento avvenuto correttamente");
+	echo("<span>Inserimento avvenuto correttamente.</span>");
 } else{
-	echo("<br>Inserimento fallito");
+	echo("<span>Inserimento fallito.</span>");
 }
 mysqli_close($link);
 ?>
