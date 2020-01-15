@@ -216,3 +216,60 @@ Selezionando l'opzione '6',viene richiesto di inserire i seguenti dati ognuno se
 Selezionando l'opzione '7',viene richiesto di inserire i seguenti dati ognuno seguito da invio: username, password, provincia, comune, anno, numero di veicoli da eliminare, le informazioni vengono inviate al database mediante richiesta HTTP all' API 'eliminare_dati_nel_database.php'.<br />
 Selezionando l'opzione '8',viene terminato il client.<br />
 . <br /><br />
+
+# Documentazione CLIENT CON INTERFACCIA HTML
+I file che includono lo sviluppo dell'interfaccia grafica (html/css) e l'utilizzo delle API di google maps per l'implementazione della mappa per la visualizzazione del comune selezionato sono i seguenti:
+
+<table>
+  <tr>
+    <td><b>File</b></td>
+    <td><b>Tipo</b></td>
+    <td><b>Descrizione</b></td>
+  </tr>
+  <tr>
+    <td>loginaccess.php</td>
+    <td>PHP/HTML</td>
+    <td>realizza la pagina di login per l'aquisizione di username e password e li invia alla pagina verifica_login.php.</td>
+  </tr>
+  <tr>
+    <td>verifica_login.php</td>
+    <td>PHP/HTML</td>
+    <td>riceve i dati di login dalla pagina di loginaccess.php e li invia trammite richiesta POST alla pagina login_.php.</td>
+  </tr>
+  <tr>
+    <td>login_.php</td>
+    <td>PHP/HTML</td>
+    <td>Si trova sul server di altervista e si occupa di verificare se i dati di login ricevuti tramite metodo POST sono presenti sulla tabella del database relativa al login e restituendo una risposta di avvenuto login o meno.
+    </td>
+  </tr>
+  <tr>
+    <td>Ricerca_numveicoli.php</td>
+    <td>PHP/HTML/JAVASCRIPT</td>
+    <td>pagina principale che mostra i comuni e gli anni presenti nel database ed implementa la mappa in cui viene indicato il comune selzionato al momento della ricerca, si connette con le pagine style.css(Grafica HTML), campi_selezione.php, select_comune.php, campi_anno.php, select_anno.php, richiesta_database.php.</td>
+  </tr>
+   <tr>
+    <td>campi_selezione.php</td>
+    <td>PHP/HTML</td>
+    <td>pagina che utilizza la API stampa_db_num_veicoli.php per aggiornare i campi di selezione dei comuni.
+    </td>
+  </tr>
+  <tr>
+    <td>campi_anno.php</td>
+    <td>PHP/HTML</td>
+    <td>pagina che utilizza la API stampa_db_num_veicoli.php per aggiornare i campi di selezione degli anni.
+    </td>
+  </tr>
+   <tr>
+    <td>select_comune.php</td>
+    <td>PHP/HTML/JAVASCRIPT</td>
+    <td>pagina che effettua la richiesta di geocoding del comune selezionato mediante il metodo google.maps.Geocoder() messo a disposizione dalle api di google.maps per poter ricavare le coordinate geografiche del comune e rapparesentare il marker sulla mappa.
+    </td>
+  </tr>
+   <tr>
+    <td> richiesta_database.php</td>
+    <td>PHP/HTML</td>
+    <td>pagina che utilizza la API stampa_sel_doppia_num_veicoli.php alla quale vengono inviati dati selezionati (comune e anno) e viene ricevuto in risposta il numero di veicoli presenti.
+    </td>
+  </tr>
+  
+</table>
