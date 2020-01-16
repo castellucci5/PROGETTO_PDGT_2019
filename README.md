@@ -230,7 +230,7 @@ I file che includono lo sviluppo del client con interfaccia grafica (html/css) e
   <tr>
     <td>loginaccess.php</td>
     <td>PHP/HTML</td>
-    <td>Pagina iniziale di login per l'aquisizione di username e password e li invia alla pagina verifica_login.php.</td>
+    <td>Pagina iniziale di login per l'aquisizione di username (userpass) e password (testuserpass) e li invia alla pagina verifica_login.php.</td>
   </tr>
   <tr>
     <td>verifica_login.php</td>
