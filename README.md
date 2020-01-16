@@ -230,7 +230,7 @@ I file che includono lo sviluppo del client con interfaccia grafica (html/css) e
   <tr>
     <td>loginaccess.php</td>
     <td>PHP/HTML</td>
-    <td>Realizza la pagina di login per l'aquisizione di username e password e li invia alla pagina verifica_login.php.</td>
+    <td>Pagina iniziale di login per l'aquisizione di username e password e li invia alla pagina verifica_login.php.</td>
   </tr>
   <tr>
     <td>verifica_login.php</td>
@@ -286,3 +286,4 @@ I file che includono lo sviluppo del client con interfaccia grafica (html/css) e
   </tr>
 </table>
 Questo tipo di Client è stato realizzato con Brackets e viene visualizzato nel broswer mediante il server Localhost WampServer (version 3.2.0).
+
