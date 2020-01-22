@@ -1,20 +1,29 @@
 <?php
-/* API per la stampa dei campionamenti del numero di veicoli, filtrati secondo 2 criteri inseriti nella query */
+/* API per la stampa del numveicoli filtrati secondo un criterio */
 
-require 'config.php';                                                      // includiamo file di configurazione
-header("Content-Type: application/json; charset=UTF-8");                   // info passate tramite header per indicare la tipologia di valore
-                                                                           // ritornato in seguito all'elaborazione del codice della pagina web 
-$link = mysqli_connect(DB_SERVER , DB_USER, DB_PASSWORD, DB_DATABASE);     // connessione al db
+require 'config.php';                                         //includiamo file di configurazione
+header("Content-Type: application/json; charset=UTF-8");      /* info passate tramite header per indicare la tipologia di valore
+                                                              ritornato in seguito all'elaborazione del codice della pagina web */
+$link = mysqli_connect(DB_SERVER , DB_USER, DB_PASSWORD, DB_DATABASE);     //connessione al db
 
-if (!$link) {                                                              //se la connessione non è avvenuta stampiamo un messaggio di avvertimento
+if (!$link) {      //se la connessione non è avvenuta stampiamo un messaggio di avvertimento
   echo "Errore: Impossibile connettersi al database MySQL." . PHP_EOL;
   echo "<br />Debugging errno: " . my_sqli_errno() . PHP_EOL;
   echo "<br />Debugging error: " . my_sqli_error() . PHP_EOL;
   exit;
 }
+$params = array(); // creo l'array dove inserire i parametri di comune e anno
+$parts = explode('/', $_SERVER['REQUEST_URI']); //suddivido la REQUEST_URI in base agli '/'
+$i = count($parts)-3; // estraggo il comune dalla REQUEST_URI
+$params[0] = $parts[$i];
+$i = count($parts)-1; // estraggo l'anno dalla REQUEST_URI
+$params[1] = $parts[$i];
 
-elseif (($_GET['COMUNE'] !== null)&&($_GET['ANNO'] !== null)) {                                                           //se effettuiamo la ricerca in base a comune e anno
-   $query = "SELECT * FROM NUMEROVEICOLI WHERE COMUNE = '".$_GET['COMUNE']."'"."AND ANNO = '".$_GET['ANNO']."'";          //query che andremo ad eseguire
+
+//and make it work with your exsisting code
+$_GET = $params;
+if (($_GET['0'] !== null)&&($_GET['1'] !== null)) {                                                     //se effettuiamo la ricerca in base alla provincia 
+   $query = "SELECT * FROM NUMEROVEICOLI WHERE COMUNE = '".$_GET['0']."'"."AND ANNO = '".$_GET['1']."'";    //query che andremo ad eseguire
 } 
 
   
@@ -29,7 +38,7 @@ if (mysqli_real_query($link, $query)) {                  //tramite questa funz. 
 				"NUMVEICOLI"   => "$row[3]",
 				 );
     }
-                                      //se l'array risulta essere vuoto
+    //se l'array risulta essere vuoto
     if (count($array_data) == 0) {
       http_response_code(400);        //modifichiamo il codice di risposta di HTTP impostandolo 400
       exit;                           //terminiamo l'esecuzione dello script
