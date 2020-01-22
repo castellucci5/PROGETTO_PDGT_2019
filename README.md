@@ -71,11 +71,11 @@ Questa API permette di effettuare una ricerca specifica nel database, andando a 
 </table>
 
 <br /><i>Esempio di URL valido, completo di query:</i><br />
-http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?PROVINCIA=GORIZIA
+http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php/PROVINCIA/GORIZIA
 
-http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?COMUNE=CAPRIVA_DEL_FRIULI
+http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php/COMUNE/CORMONS
 
-http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?ANNO=1999-2000
+http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php/ANNO/2011-2012
 
 <br /><br />
 <strong>stampa_sel_doppia_num_veicoli.php</strong> <br />
@@ -100,7 +100,7 @@ Questa API permette di effettuare una ricerca specifica nel database, andando a 
 </table>
 
 <br /><i>Esempio di URL valido, completo di query:</i><br />
-http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE=CAPRIVA_DEL_FRIULI&ANNO=1999-2000
+http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php/COMUNE/CORMONS/ANNO/2011-2012
 
 
 <br /><br />
