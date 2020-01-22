@@ -1,9 +1,7 @@
 <?php
 /* File contenente il codice sorgente del client */
-
                                //includiamo file contenente le funzioni usate dal client
 require 'function.php';
-
                                //stampa info programmatore e client
 echo "\n*********************************\n";
 echo "|  Progetto PDGT  A.A. 2019/2020   |\n";
@@ -15,9 +13,7 @@ echo "|    al database del numero di     |\n";
 echo "|     veicoli della regione        |\n";
 echo "|    FRIULI VENEZIA GIULIA         |\n";
 echo "------------------------------------\n\n";
-
 $close_client = 1;            //impostiamo variabile di controllo ciclo do-while del menù
-
                               //entriamo nel menù
 do {
   echo "\n\nSelezionare la richiesta da eseguire al database: \n";
@@ -50,7 +46,7 @@ do {
     echo "inserire una provincia del Friuli-Venezia-Giulia con la quale filtrare la tabella";
     $research = readline();//acquisizione caratteri da filtrare
     //selezione dell'url a cui effettuare richiesta HTTP
-    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?PROVINCIA='.$research);
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php/PROVINCIA/'.$research);
     //settaggio della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     //esecuzione della richiesta HTTP
@@ -67,7 +63,7 @@ do {
     echo "inserire un comune del Friuli-Venezia-Giulia con la quale filtrare la tabella";
     $research = readline(); //acquisizione caratteri da filtrare
     //selezione dell'url a cui effettuare richiesta HTTP
-    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?COMUNE='.$research);
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php/COMUNE/'.$research);
     //settaggio della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     //esecuzione della richiesta HTTP
@@ -84,7 +80,7 @@ do {
     echo "inserire L'anno con la quale filtrare la tabella";
     $research = readline(); //acquisizione caratteri da filtrare
     //selezione dell'url a cui effettuare richiesta HTTP
-    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php?ANNO='.$research);
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_dati_sel_num_veicoli.php/ANNO/'.$research);
     //settaggio della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     //esecuzione della richiesta HTTP
@@ -104,7 +100,7 @@ do {
 	echo "inserire un ANNO con IL quale filtrare la tabella";
     $researchb = readline(); //acquisizione caratteri da filtrare
     //selezione dell'url a cui effettuare richiesta HTTP per la richiesta con doppio parametro
-    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE='.$research.'&ANNO='.$researchb);
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php/COMUNE/'.$research.'/ANNO/'.$researchb);
     //settaggio della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
     //esecuzione della richiesta HTTP

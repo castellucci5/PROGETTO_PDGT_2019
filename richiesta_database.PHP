@@ -16,7 +16,7 @@ if((!empty($_POST['Comuni']))&&(!empty($_POST['anno']))) {
     } 
 
    
-    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php?COMUNE='.$research.'&ANNO='.$researchb);
+    $handle = curl_init('http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php/COMUNE/'.$research.'/ANNO/'.$researchb);
                                      //richiesta della risposta HTTP come stringa
     curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
                                      //esecuzione della richiesta HTTP
@@ -47,5 +47,5 @@ if((!empty($_POST['Comuni']))&&(!empty($_POST['anno']))) {
      
  }
 }
-     
+   
 ?>
