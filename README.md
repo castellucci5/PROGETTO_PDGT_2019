@@ -42,7 +42,8 @@ Non richiede parametri. Se la richiesta HTTP(metodo GET) ha successo restituisce
 ]<br />
 
 <br /><br />
-
+<br /><i>Esempio di URL valido:</i><br />
+http://giakispeed.altervista.org/PDGT/stampa_db_num_veicoli.php
 
 <strong>stampa_dati_sel_num_veicoli.php</strong> <br />
 Questa API permette di effettuare una ricerca specifica nel database, andando a cercare l'unico parametro passato nella query. Se la richiesta HTTP (metodo GET) ha successo restituisce la lista dei campionamenti (intera riga del database) del numero di veicoli richiesti in formato JSON, altrimenti ritorna lo stato HTTP #400.
