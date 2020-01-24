@@ -141,7 +141,7 @@ do {
      }
     else{
         echo("\nERROR 400\n");
-		echo("Verificare che i dati di login inseriti siano corretti\n");
+	echo("Verificare che i dati di login inseriti siano corretti\n");
         echo("Verificare che la provincia e il comune appartengano alla regione Friuli-Venezia-Giulia\n");
         echo("Verificare che i campi provincia comune e anno che si vogliono inserire non siano già presenti nel database\n");
         echo("Inserimento fallito.");
@@ -181,7 +181,7 @@ do {
      }
     else{
         echo("\nERROR 400\n");
-		echo("Verificare che i dati di login inseriti siano corretti\n");
+        echo("Verificare che i dati di login inseriti siano corretti\n");
         echo("Verificare che i dati che si vogliono eliminare siano presenti nel database\n");
         echo("Eliminazione fallita.\n");
         
