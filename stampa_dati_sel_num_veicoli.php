@@ -1,5 +1,5 @@
 <?php
-/* API per la stampa dei vaporetti filtrati secondo un criterio */
+/* API per la stampa del numero di veicoli filtrati secondo un criterio */
 
 require 'config.php';                                         //includiamo file di configurazione
 header("Content-Type: application/json; charset=UTF-8");      /* info passate tramite header per indicare la tipologia di valore
