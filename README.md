@@ -208,3 +208,7 @@ L'API risponderà con un codice http di risposta 200 per l'avventuto inserimento
 
 <br /><i>l'url di riferimento per l'invio di dati tramite metodo POST relativi alla richiesta di eliminazione é il seguente:</i><br />
 http://giakispeed.altervista.org/PDGT/eliminare_dati_nel_database.php
+
+# DOCUMENTAZIONE OPENAPI
+Il file openapi.ymal (o in fromato 'openapi.json') è stato scritto secondo le specifiche di OpenAPI 3.0 e di Swagger 2.0.
+Importando il file nell'editor di testo offerto da Swagger si ha l'opportunità di poter osservare più intuitivamente il comportamento della API stampa_dati_sel_num_veicoli.php, con quali informazioni interagiscono e quali metodi HTTP sfruttano per le loro richieste.
