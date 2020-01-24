@@ -14,9 +14,20 @@ if((!empty($_POST['provincia_i']))&&(!empty($_POST['comune_i']))&&(!empty($_POST
     curl_setopt($ch, CURLOPT_URL,"http://giakispeed.altervista.org/PDGT/inserire_dati_nel_database.php"); 
     curl_setopt($ch, CURLOPT_POST, 1); //passaggio dei dati trammite metodo POST 
     curl_setopt($ch, CURLOPT_POSTFIELDS, "UTENTE=".$username."&PASSWORD=".$password."&PROVINCIA=".$provincia_i."&COMUNE=".$comune_i."&ANNO=".$anno_i."&NUMVEICOLI=".$numveicoli_i);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $res = curl_exec($ch);
-    curl_close($ch);
+    $http_code = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+    if ($http_code==200){
+         
+         echo("<span>Inserimento avvenuto correttamente.</span>");  
+     }
+    else{
+        echo("<span>error 400</span><br/>");
+        echo("<span>Verificare che la provincia e il comune appartengano alla regione Friuli-Venezia-Giulia</span><br/>");
+        echo("<span>verificare che i campi provincia comune e anno che si vogliono inserire non siano già presenti nel database</span><br/>");
+        echo("<span>Inserimento fallito.</span>");
+        
+    }
 
 }
 else { 
@@ -37,9 +48,22 @@ if((!empty($_POST['provincia_e']))&&(!empty($_POST['comune_e']))&&(!empty($_POST
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
  "UTENTE=".$username."&PASSWORD=".$password."&PROVINCIA=".$provincia_e."&COMUNE=".$comune_e."&ANNO=".$anno_e."&NUMVEICOLI=".$numveicoli_e);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $res = curl_exec($ch);
-    curl_close($ch);
+    $http_code = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+    //curl_close($ch);
+    if ($http_code==200){
+         
+         echo("<span>Eliminazione avvenuta correttamente.</span>");  
+     }
+    else{
+        echo("<span>error 400</span><br/>");
+        echo("<span>Verificare che i dati che si vogliono eliminare siano presenti nel database</span><br/>");
+        echo("<span>Eliminazione fallita.</span><br/>");
+        
+    }
+
+    
 }
 else { 
     echo "<span>Attenzione a non lasciare campi vuoti </span><br/>";

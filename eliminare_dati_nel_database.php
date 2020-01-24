@@ -33,11 +33,11 @@ if (mysqli_real_query($link, $query)) {
  $row = mysqli_fetch_row($result);
 
 if (($row[1] == $username) && ($row[2] == $password)) {
-   echo ("<span>Utente loggato</span><br>");
+   //echo ("<span>Utente loggato</span><br>");
 	$verifica_login = 1;
                                                                         //controlli sui dati inseriti dall'utente
 }else{
-	echo ("<span>Username e password errati</span><br>");
+	//echo ("<span>Username e password errati</span><br>");
 	$verifica_login = 0;
 }
 }
@@ -46,11 +46,11 @@ $query = "SELECT COUNT(*) FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'AND
 $result = $link->query($query);
 $row = mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 if ($row[0]> 0) {
-		echo ("<span>Dati da eliminare trovati</span>"); 
+		//echo ("<span>Dati da eliminare trovati</span>"); 
         $controllo_dati_dupplicati=1;
 	}
 else {
-	    echo ("<br><span>I dati da eliminare non sono prresenti nel database</span>");
+	    //echo ("<br><span>I dati da eliminare non sono prresenti nel database</span>");
 		$controllo_dati_dupplicati=0;
 	}
 		
@@ -62,10 +62,13 @@ if (($verifica_login == 1)&&($controllo_dati_dupplicati == 1)) {
   $toinsert = "DELETE FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'AND COMUNE = '{$comune}'AND ANNO = '{$anno}'AND NUMVEICOLI = '{$numveicoli}'";
 }
                                                                                 //verifico se l'eliminazione dai dati è avvenuta correttamente
-if (mysqli_real_query($link, $toinsert)) {   
-	echo("<br><span>Eliminazione dei dati avvenuta correttamente.</span>");
+if (mysqli_real_query($link, $toinsert)) { 
+  http_response_code(200);
+  
+	//echo("<br><span>Eliminazione dei dati avvenuta correttamente.</span>");
 } else{
-	echo("<br><span>Eliminazione dati fallita.</span>");
+   http_response_code(400);
+	//echo("<br><span>Eliminazione dati fallita.</span>");
 }
 mysqli_close($link);
 ?>

@@ -49,11 +49,11 @@ $result = $link->query($query);
 $row=mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 
 if ($row[0]> 0) {
-    echo ("<span>Ok,la provincia e il comune sono appartenenti alla regione,</span><br>");
+    //echo ("<span>Ok,la provincia e il comune sono appartenenti alla regione,</span><br>");
     $controllo_regione = 1;	
     }
 else {
-	 echo ("<span>Attenzione, la provincia e il comune non sono appartenenti alla regione,</span><br>");
+	/// echo ("<span>Attenzione, la provincia e il comune non sono appartenenti alla regione,</span><br>");
 	 $controllo_regione = 0;
 }	
 
@@ -64,7 +64,7 @@ $query   = "SELECT COUNT(*) FROM NUMEROVEICOLI WHERE PROVINCIA = '{$provincia}'A
 $result = $link->query($query);
 $row=mysqli_fetch_array($result); //creo un'arry per leggere la risposta della query
 if ($row[0]> 0) {
-		echo ("<span>ATTENZIONE,i dati da inserire sono già presenti nel database,</span><br>"); 
+		//echo ("<span>ATTENZIONE,i dati da inserire sono già presenti nel database,</span><br>"); 
         $controllo_dati_dupplicati=0;
 	}
 else {
@@ -82,10 +82,14 @@ if (($verifica_login == 1)&&($controllo_regione == 1)&&($controllo_dati_dupplica
 			"('".$provincia."','".$comune."','".$anno."','".$numveicoli."')";
 }
                                                                       //verifico se l'inserimento dai dati è avvenuto correttamente
-if (mysqli_real_query($link, $toinsert)) {   
-	echo("<span>Inserimento avvenuto correttamente.</span>");
+if (mysqli_real_query($link, $toinsert)) { 
+    http_response_code(200);
+     exit; 
+	//echo("<span>Inserimento avvenuto correttamente.</span>");
 } else{
-	echo("<span>Inserimento fallito.</span>");
+    http_response_code(400);
+     exit; 
+	//echo("<span>Inserimento fallito.</span>");
 }
 mysqli_close($link);
 ?>
