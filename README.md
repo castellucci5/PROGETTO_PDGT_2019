@@ -107,7 +107,9 @@ http://giakispeed.altervista.org/PDGT/stampa_sel_doppia_num_veicoli.php/COMUNE/C
 <br /><br />
 
 <strong>inserire_dati_nel_database.php</strong> <br />
-Questa API permette di inserire dati (aggiunge una riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuto inserimento oppure con un messaggio di insuccesso. Specificando il motivo dell'insucceso.
+Questa API permette di inserire dati (aggiunge una riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione.
+Prima dell'inserimento viene verificata l'identità dell'utente, se i campi provincia e comune che si vogliono inserire appartengono alla regione friuli-venezia giulia e se i campi provincia comune e anno non siano già presenti nel database. 
+L'API risponderà con un codice http di risposta 200 per l'avventuto inserimento o 400 per l'insuccesso.
 
 <table>
   <tr>
@@ -157,7 +159,10 @@ http://giakispeed.altervista.org/PDGT/inserire_dati_nel_database.php
 *****
 
 <strong>eliminare_dati_nel_database.php</strong> <br />
-Questa API permette di eliminare dati (elimina una riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione. L'API risponderà con un messaggio di conferma di avventuta eliminazione oppure con un messaggio di insuccesso. Prima dell'eliminazione viene verificata l'identità dell'utente e la presenza dei dati da eliminare nel database e viene infine segnalato il successo o l'insucceso della richiesta.
+Questa API permette di eliminare dati (elimina una riga) all'interno del database. I dati vengono ricevuti taramite richiesta http (metodo POST).All'interno dei dati POST inviati in questo caso sarà necessario anche inviare i dati di accesso dell'utente che intende effettuare l'operazione.
+Prima dell'eliminazione viene verificata l'identità dell'utente e la presenza dei dati da eliminare nel database.
+L'API risponderà con un codice http di risposta 200 per l'avventuto inserimento o 400 per l'insuccesso.
+
 
 <table>
   <tr>
