@@ -1,0 +1,136 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "PROGETTO_PDGT_2019",
+    "description" : "Api per la visualizzazione del numero di veicoli presenti nella regione Friuli-Venezia-Giulia nel corso degli anni",
+    "contact" : {
+      "email" : "g.castellucci@campus.uniurb.it"
+    },
+    "license" : {
+      "name" : "GNU General Public License v3.0",
+      "url" : "http://www.gnu.org/licences/gpl.txt"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/castellucci5/PROGETTO_PDGT_2019/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "http://giakispeed.altervista.org/PDGT/stampa_db_num_veicoli.php"
+  }, {
+    "url" : "https://github.com/castellucci5/PROGETTO_PDGT_2019"
+  } ],
+  "tags" : [ {
+    "name" : "Public",
+    "description" : "API accesso libero"
+  }, {
+    "name" : "API aperta",
+    "description" : "API utilizzabile senza vincoli di accesso"
+  } ],
+  "paths" : {
+    "/stampa_dati_sel_num_veicoli.php/PROVINCIA/<provincia>" : {
+      "get" : {
+        "tags" : [ "public" ],
+        "summary" : "ricerca numero per provincia",
+        "description" : "scelta una Provincia o un comune o un anno verrà restuito il numero di veicoli filtrati in base al parametro richiesto.\n",
+        "operationId" : "serach PROVINCIA",
+        "parameters" : [ {
+          "name" : "provincia",
+          "in" : "path",
+          "description" : "secelta fatta in base alla provincia",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "PROVINCIA",
+          "in" : "query",
+          "description" : "nome della provincia nella quale ricercare numveicoli",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "COMUNE",
+          "in" : "query",
+          "description" : "nome del comune relativo al numveicoli",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "ANNO",
+          "in" : "query",
+          "description" : "anno relativo al campionamento",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "NUMVEICOLI",
+          "in" : "query",
+          "description" : "numero di veicoli presenti",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "number"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "array di oggetti numveicoli",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/InventoryItem"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "errore nella richiesta"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "InventoryItem" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/InventoryItem_inner"
+        }
+      },
+      "InventoryItem_inner" : {
+        "type" : "object",
+        "properties" : {
+          "PROVINCIA" : {
+            "type" : "string"
+          },
+          "COMUNE" : {
+            "type" : "string"
+          },
+          "ANNO" : {
+            "type" : "string"
+          },
+          "NUMVEICOLI" : {
+            "type" : "number"
+          }
+        }
+      }
+    }
+  }
+}
